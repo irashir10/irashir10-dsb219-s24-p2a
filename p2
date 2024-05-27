@@ -1,0 +1,8 @@
+def generate_spectrum_with_positions(reference_genome_file, k):
+    reference_genome = read_fasta(reference_genome_file)
+    spectrum_with_positions = []
+    for sequence_id, sequence in reference_genome.items():
+        for i in range(len(sequence) - k + 1):
+            kmer = sequence[i:i+k]
+            spectrum_with_positions.append((kmer, f"{sequence_id}:{i}"))
+    return spectrum_with_positions
